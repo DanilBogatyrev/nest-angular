@@ -1,0 +1,47 @@
+<p>Ваша Корзина</p>
+<!-- <p>{{cart | json}}</p> -->
+
+<table mat-table [dataSource]="cart" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Наименование </th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Цена, руб. </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef> Количество </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sum">
+    <th mat-header-cell *matHeaderCellDef> Сумма, руб. </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity * element.price}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<button mat-stroked-button color="primary" (click)="clearCart()">Очистить корзину</button>
+<p>Ваши данные:</p>
+<form class="example-form" [formGroup]="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="form.controls['email'].hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
+<button mat-stroked-button color="primary" (click)="sendCart()">Купить</button>

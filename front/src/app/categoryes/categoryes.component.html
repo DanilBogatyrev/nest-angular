@@ -1,0 +1,5 @@
+<div *ngIf="categoryes">
+  <!-- <p *ngFor="let category of categoryes">{{category.title}}</p> -->
+  <a *ngFor="let category of categoryes" class="button" routerLink="category/{{category.id}}">{{category.title}}</a>
+</div>
+

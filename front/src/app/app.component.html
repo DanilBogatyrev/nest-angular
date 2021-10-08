@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <app-auth *ngIf="!isCloseWindow" (isCloseWindow)="closeAuth($event)"></app-auth>
+      <button mat-stroked-button color="primary" (click)="getUsers()">GetUsers</button>
+      <button mat-stroked-button color="primary" (click)="login()">Login</button>
+      <a routerLink="/cart"><button mat-stroked-button color="primary">Cart</button></a>
+    </div>
+    <div class="categoryes">
+      <app-categoryes></app-categoryes>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <p>Footer</p>
+    </div>
+    
+  </div>
+</body>
+</html>
+
+
